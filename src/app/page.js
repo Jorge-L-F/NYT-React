@@ -1,9 +1,9 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+//import Image from "next/image";
+//import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
+    /*<div className={styles.page}>
       <main className={styles.main}>
         <Image
           className={styles.logo}
@@ -90,6 +90,9 @@ export default function Home() {
           Go to nextjs.org →
         </a>
       </footer>
+    </div>*/
+    <div className="feed-container">
+      <button className="fetch-button"><b>Fetch News</b></button>
     </div>
   );
 }
