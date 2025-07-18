@@ -6,6 +6,14 @@ const get_url = 'https://api.nytimes.com/svc/topstories/v2/home.json?api-key=' +
 export async function fetchFeed() {
     await axios.get(get_url).then(
         response => {return response.data},
-        error => {return error.toJSON()}
+        error => {
+            if (error.response) {
+                return error.response.data + "\n" + error.errorResponse.status + "\n" + error.errorResponse.headers;
+            }
+            else if (data.request)
+                return error.request;
+            else
+                return error.message;
+        }
     )
 }

@@ -16,15 +16,8 @@ export default function Home() {
       setNews(data);
       setError(null);
     }
-    else if (data instanceof Object) {
-      errorMessage = "There was a problem while fetching the articles from NYT. Try refreshing the page.\n";
-      if (data.response) {
-        errorMessage += data.response.data + "\n" + data.errorResponse.status + "\n" + data.errorResponse.headers;
-      }
-      else if (data.request)
-        errorMessage += data.request;
-      else
-        errorMessage += data.message;
+    else if (data instanceof String) {
+      errorMessage = "There was a problem while fetching the articles from NYT. Try refreshing the page.\n" + data;
     }
 
     setError(errorMessage);
