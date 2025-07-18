@@ -1,21 +1,42 @@
+"use client";
+
 //import Image from "next/image";
 //import styles from "./page.module.css";
-import FeedContainer from "./components/feed-container";
-import axios from "axios";
-import secrets from "../../secrets.json";
+import { useState } from "react";
+import { fetchFeed } from "./server";
 
 export default function Home() {
-  const get_url = 'https://api.nytimes.com/svc/topstories/v2/home.json?api-key=' + secrets.token;
+  const [title] = useState('NYT Feed');
+  const [newspaper, setNews] = useState([]);
+  const [errorResponse, setError] = useState(null);
 
-  async function fetchNews() {
-    axios.get(get_url).then(
-      response => {return response},
-      error => {return error}
-    )
+  function fetchNews() {
+    const data = fetchFeed();
+    if (data instanceof Array) {
+      setNews(data);
+      setError(null);
+    }
+    else if (data instanceof Object) {
+      errorMessage = "There was a problem while fetching the articles from NYT. Try refreshing the page.\n";
+      if (data.response) {
+        errorMessage += data.response.data + "\n" + data.errorResponse.status + "\n" + data.errorResponse.headers;
+      }
+      else if (data.request)
+        errorMessage += data.request;
+      else
+        errorMessage += data.message;
+    }
+
+    setError(errorMessage);
   };
 
   return (
-    <FeedContainer/>
+    <div className="feed-container">
+      <button onClick={fetchNews} className="fetch-button"><b>Fetch News</b></button>
+      <div className="scrollable-box">
+        
+      </div>
+    </div>
     /*<div className={styles.page}>
       <main className={styles.main}>
         <Image
