@@ -1,8 +1,21 @@
 //import Image from "next/image";
 //import styles from "./page.module.css";
+import FeedContainer from "./components/feed-container";
+import axios from "axios";
+import secrets from "../../secrets.json";
 
 export default function Home() {
+  const get_url = 'https://api.nytimes.com/svc/topstories/v2/home.json?api-key=' + secrets.token;
+
+  async function fetchNews() {
+    axios.get(get_url).then(
+      response => {return response},
+      error => {return error}
+    )
+  };
+
   return (
+    <FeedContainer/>
     /*<div className={styles.page}>
       <main className={styles.main}>
         <Image
@@ -91,8 +104,5 @@ export default function Home() {
         </a>
       </footer>
     </div>*/
-    <div className="feed-container">
-      <button className="fetch-button"><b>Fetch News</b></button>
-    </div>
   );
 }
