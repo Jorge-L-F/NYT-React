@@ -1,5 +1,5 @@
 # NYT-Feed
-This is a simple application built with HTML, CSS, React and Next.js to retrieve and show a news feed from the [New York Times journal](https://www.nytimes.com/). This is port of an app I previously made with Vue and Node.js, which can be found [here](https://github.com/Jorge-L-F/NYT-Feed).
+This is a simple application built with HTML, CSS, React and Next.js to retrieve and show a news feed from the [New York Times journal](https://www.nytimes.com/). This is a port of an app I previously made with Vue and Node.js, which can be found [here](https://github.com/Jorge-L-F/NYT-Vue).
 
 ##### Setup:
 - Get a token for the journal's api.
