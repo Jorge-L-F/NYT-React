@@ -13,11 +13,9 @@ function runMiddleware(req, res, fn) {
     return new Promise((resolve, reject) => {
         fn(req, res, result => {
             if (result instanceof Error) {
-                console.log("Rejected by CORS.");
                 return reject(result);
             }
 
-            console.log("Accepted by CORS.");
             return resolve(result);
         });
     });
@@ -26,7 +24,6 @@ function runMiddleware(req, res, fn) {
 export default async function handler(req, res) {
     if (req.method === 'GET') {
         await runMiddleware(req, res, cors);
-        console.log("Request received.")
         res.setHeader("Content-Type", "application/json");
         await axios.get(get_url).then(
             response => {
