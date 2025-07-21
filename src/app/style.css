@@ -65,12 +65,20 @@ footer {
 }
 .news-object {
     display: flex;
-    margin-top: max(0px, calc(4vw - 16.8px));
-    margin-bottom: max(0px, calc(4vw - 16.8px));
-    margin-left: max(0px, calc(4vw - 16.8px));
-    margin-right: max(0px, calc(4vw - 16.8px));
+    margin-top: max(15px, calc(4vw - 16.8px));
+    margin-bottom: max(15px, calc(4vw - 16.8px));
+    margin-left: max(15px, calc(4vw - 16.8px));
+    margin-right: max(15px, calc(4vw - 16.8px));
     padding: 30px;
     background-color: rgb(176, 223, 238);
+}
+@media only screen and (max-width: 500px) {
+    .news-object {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 }
 .news-details {
     margin-left: 40px;
