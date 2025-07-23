@@ -125,3 +125,15 @@ img {
 .logo {
     margin-left: max(15px, calc(3vw - 27.6px));
 }
+.logo.small {
+    margin-left: max(15px, calc(3vw - 27.6px));
+    display: none;
+}
+@media only screen and (max-width: 450px) {
+    .logo.large {
+        display: none;
+    }
+    .logo.small {
+        display: block;
+    }
+}
