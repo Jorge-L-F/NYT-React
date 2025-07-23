@@ -15,7 +15,6 @@ function ErrorMessage({errorResponse}) {
 }
 
 export default function Home() {
-  const [title] = useState('NYT Feed');
   const [newspaper, setNews] = useState([]);
   const [errorResponse, setError] = useState(null);
 
