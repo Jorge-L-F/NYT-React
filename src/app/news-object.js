@@ -2,7 +2,7 @@
 
 function Multimedia({multimedia}) {
     if (multimedia != null && multimedia != undefined && multimedia.length)
-      return <img src={multimedia[multimedia.length - 1].url} className="news-image"/>
+      return <img src={multimedia[multimedia.length - 1].url} alt="News Image" className="news-image"/>
 }
 
 function NewsDetails({news}) {

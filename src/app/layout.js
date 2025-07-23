@@ -17,10 +17,10 @@ export default function RootLayout({ children }) {
         {children}
         <footer>
           <a href="https://developer.nytimes.com/">
-            <img src="https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344" className="logo large"/>
+            <img src="https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344" alt="NYT Logo" className="logo large"/>
           </a>
           <a href="https://developer.nytimes.com/">
-            <img src="https://developer.nytimes.com/files/poweredby_nytimes_150a.png?v=1583354208339" className="logo small"/>
+            <img src="https://developer.nytimes.com/files/poweredby_nytimes_150a.png?v=1583354208339" alt="NYT Logo" className="logo small"/>
           </a>
         </footer>
       </body>
