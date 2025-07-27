@@ -58,6 +58,14 @@ const noByline = {
   url: "http://localhost:3000"
 };
 
+const invalidByline = {
+  multimedia: ["https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344"],
+  title: "Another test",
+  abstract: "This is just another test.",
+  byline: 128,
+  url: ""
+};
+
 describe('<NewsObject />', () => {
   it("test render", () => {
     // see: https://on.cypress.io/mounting-react
@@ -125,6 +133,15 @@ describe('<NewsObject />', () => {
 
   it("no byline", () => {
     cy.mount(<NewsObject news={noByline}/>);
+    cy.get(".news-object").within(() => {
+      cy.get(".news-image").should("not.exist");
+      cy.get(".news-details").should("not.exist");
+      cy.get(".solo-news-details").should("not.exist");
+    });
+  });
+
+  it("invalid byline", () => {
+    cy.mount(<NewsObject news={invalidByline}/>);
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
