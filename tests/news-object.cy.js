@@ -42,6 +42,14 @@ const noText = {
   url: "http://localhost:3000"
 };
 
+const noAbstract = {
+  multimedia: ["https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344"],
+  title: "test",
+  abstract: "",
+  byline: "By unknown",
+  url: "http://localhost:3000"
+};
+
 const noByline = {
   multimedia: [],
   title: "test",
@@ -102,6 +110,15 @@ describe('<NewsObject />', () => {
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
+      cy.get(".solo-news-details").should("not.exist");
+    });
+  });
+
+  it("no abstract", () => {
+    cy.mount(<NewsObject news={noAbstract}/>);
+    cy.get(".news-object").within(() => {
+      cy.get(".news-image").should("exist");
+      cy.get(".news-details").should("exist");
       cy.get(".solo-news-details").should("not.exist");
     });
   });
