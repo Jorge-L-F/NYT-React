@@ -74,6 +74,22 @@ const stillInvalid = {
   url: "http://localhost:3000"
 };
 
+const stillInvalid2 = {
+  multimedia: ["https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344"],
+  title: "Another test",
+  abstract: "This is just another test.",
+  byline: "aknasojdasjfoif",
+  url: "http://localhost:3000"
+};
+
+const stillInvalid3 = {
+  multimedia: ["https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344"],
+  title: "Another test",
+  abstract: "This is just another test.",
+  byline: "By  ",
+  url: "http://localhost:3000"
+};
+
 describe('<NewsObject />', () => {
   it("test render", () => {
     // see: https://on.cypress.io/mounting-react
@@ -159,6 +175,24 @@ describe('<NewsObject />', () => {
 
   it("still invalid", () => {
     cy.mount(<NewsObject news={stillInvalid}/>);
+    cy.get(".news-object").within(() => {
+      cy.get(".news-image").should("not.exist");
+      cy.get(".news-details").should("not.exist");
+      cy.get(".solo-news-details").should("not.exist");
+    });
+  });
+
+  it("still invalid 2", () => {
+    cy.mount(<NewsObject news={stillInvalid2}/>);
+    cy.get(".news-object").within(() => {
+      cy.get(".news-image").should("not.exist");
+      cy.get(".news-details").should("not.exist");
+      cy.get(".solo-news-details").should("not.exist");
+    });
+  });
+
+  it("still invalid 3", () => {
+    cy.mount(<NewsObject news={stillInvalid3}/>);
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
