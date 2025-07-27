@@ -6,7 +6,7 @@ function Multimedia({multimedia}) {
 }
 
 function NewsDetails({news}) {
-  if ((news.title || news.abstract) && news.url) {
+  if ((news.title || news.abstract) && news.byline && news.url) {
     if (news.multimedia == null || news.multimedia == undefined || !news.multimedia.length) {
       return (
         <div className="solo-news-details">
