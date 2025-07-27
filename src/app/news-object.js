@@ -1,13 +1,25 @@
 "use client";
 
-function Multimedia({multimedia}) {
-    if (multimedia != null && multimedia != undefined && multimedia.length)
-      return (<img src={multimedia[multimedia.length - 1].url} alt="News Image" className="news-image"/>);
+function validateMultimedia(multimedia) {
+  return multimedia != null && multimedia != undefined && multimedia.length;
+}
+
+function validateDetails(news) {
+  return (news.title || news.abstract) && news.byline && typeof news.byline == "string" && news.url;
+}
+
+function validateEntry(news) {
+  return validateMultimedia(news.multimedia) && validateDetails(news);
+}
+
+function Multimedia({news}) {
+    if (validateEntry(news))
+      return (<img src={news.multimedia[news.multimedia.length - 1].url} alt="News Image" className="news-image"/>);
 }
 
 function NewsDetails({news}) {
-  if ((news.title || news.abstract) && news.byline && news.url) {
-    if (news.multimedia == null || news.multimedia == undefined || !news.multimedia.length) {
+  if (validateDetails(news)) {
+    if (!validateMultimedia(news.multimedia)) {
       return (
         <div className="solo-news-details">
           <p className="news-title"><b>{news.title}</b></p>
@@ -33,7 +45,7 @@ function NewsDetails({news}) {
 export default function NewsObject(info) {
   return (
     <div className="news-object">
-      <Multimedia multimedia={info.news.multimedia}/>
+      <Multimedia news={info.news}/>
       <NewsDetails news={info.news}/>
     </div>
   );
