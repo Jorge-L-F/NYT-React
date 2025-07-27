@@ -42,6 +42,14 @@ const noText = {
   url: "http://localhost:3000"
 };
 
+const noByline = {
+  multimedia: [],
+  title: "test",
+  abstract: "test news",
+  byline: "",
+  url: "http://localhost:3000"
+};
+
 describe('<NewsObject />', () => {
   it("test render", () => {
     // see: https://on.cypress.io/mounting-react
@@ -91,6 +99,15 @@ describe('<NewsObject />', () => {
 
   it("no text", () => {
     cy.mount(<NewsObject news={noText}/>);
+    cy.get(".news-object").within(() => {
+      cy.get(".news-image").should("not.exist");
+      cy.get(".news-details").should("not.exist");
+      cy.get(".solo-news-details").should("not.exist");
+    });
+  });
+
+  it("no byline", () => {
+    cy.mount(<NewsObject news={noByline}/>);
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
