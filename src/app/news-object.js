@@ -5,7 +5,7 @@ function validateMultimedia(multimedia) {
 }
 
 function validateDetails(news) {
-  return (news.title || news.abstract) && news.byline && typeof news.byline == "string" && news.byline.length > 3 && news.url;
+  return (news.title || news.abstract) && news.byline && typeof news.byline == "string" && news.byline.trim().length > 3 && news.byline.trim().startsWith("By ") && news.url;
 }
 
 function validateEntry(news) {
