@@ -63,7 +63,7 @@ const invalidByline = {
   title: "Another test",
   abstract: "This is just another test.",
   byline: 128,
-  url: ""
+  url: "http://localhost:3000"
 };
 
 describe('<NewsObject />', () => {
