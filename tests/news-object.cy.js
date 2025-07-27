@@ -24,10 +24,25 @@ const breakageNews = {
   abstract: false,
   byline: 0,
   url: ""
-}
+};
+
+const noURl = {
+  multimedia: [],
+  title: "test",
+  abstract: "test news",
+  byline: "",
+  url: ""
+};
+
+const noText = {
+  multimedia: [],
+  title: "",
+  abstract: "",
+  byline: "?",
+  url: "http://localhost:3000"
+};
 
 describe('<NewsObject />', () => {
-
   it("test render", () => {
     // see: https://on.cypress.io/mounting-react
     cy.mount(<NewsObject news={testNews}/>);
@@ -58,6 +73,24 @@ describe('<NewsObject />', () => {
 
   it("breakage test", () => {
     cy.mount(<NewsObject news={breakageNews}/>);
+    cy.get(".news-object").within(() => {
+      cy.get(".news-image").should("not.exist");
+      cy.get(".news-details").should("not.exist");
+      cy.get(".solo-news-details").should("not.exist");
+    });
+  });
+
+  it("no url", () => {
+    cy.mount(<NewsObject news={noURl}/>);
+    cy.get(".news-object").within(() => {
+      cy.get(".news-image").should("not.exist");
+      cy.get(".news-details").should("not.exist");
+      cy.get(".solo-news-details").should("not.exist");
+    });
+  });
+
+  it("no text", () => {
+    cy.mount(<NewsObject news={noText}/>);
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
