@@ -1,4 +1,4 @@
-import NewsObject from '../src/app/news-object';
+import NewsObject from '../../src/app/news-object';
 
 const testNews = {
   multimedia: ["https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344"],
