@@ -94,6 +94,7 @@ describe('<NewsObject />', () => {
   it("test render", () => {
     // see: https://on.cypress.io/mounting-react
     cy.mount(<NewsObject news={testNews}/>);
+    cy.get(".news-object").should("be.visible");
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("exist");
       cy.get(".news-details").should("exist");
@@ -103,6 +104,7 @@ describe('<NewsObject />', () => {
 
   it("solo test render", () => {
     cy.mount(<NewsObject news={soloTestNews}/>);
+    cy.get(".news-object").should("be.visible");
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
@@ -112,6 +114,7 @@ describe('<NewsObject />', () => {
 
   it("empty test", () => {
     cy.mount(<NewsObject news={emptyNews}/>);
+    cy.get(".news-object").should("not.be.visible");
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
@@ -121,6 +124,7 @@ describe('<NewsObject />', () => {
 
   it("breakage test", () => {
     cy.mount(<NewsObject news={breakageNews}/>);
+    cy.get(".news-object").should("not.be.visible");
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
@@ -130,6 +134,7 @@ describe('<NewsObject />', () => {
 
   it("no url", () => {
     cy.mount(<NewsObject news={noURl}/>);
+    cy.get(".news-object").should("not.be.visible");
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
@@ -139,6 +144,7 @@ describe('<NewsObject />', () => {
 
   it("no text", () => {
     cy.mount(<NewsObject news={noText}/>);
+    cy.get(".news-object").should("not.be.visible");
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
@@ -148,6 +154,7 @@ describe('<NewsObject />', () => {
 
   it("no abstract", () => {
     cy.mount(<NewsObject news={noAbstract}/>);
+    cy.get(".news-object").should("be.visible");
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("exist");
       cy.get(".news-details").should("exist");
@@ -157,6 +164,7 @@ describe('<NewsObject />', () => {
 
   it("no byline", () => {
     cy.mount(<NewsObject news={noByline}/>);
+    cy.get(".news-object").should("not.be.visible");
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
@@ -166,6 +174,7 @@ describe('<NewsObject />', () => {
 
   it("invalid byline", () => {
     cy.mount(<NewsObject news={invalidByline}/>);
+    cy.get(".news-object").should("not.be.visible");
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
@@ -175,6 +184,7 @@ describe('<NewsObject />', () => {
 
   it("still invalid", () => {
     cy.mount(<NewsObject news={stillInvalid}/>);
+    cy.get(".news-object").should("not.be.visible");
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
@@ -184,6 +194,7 @@ describe('<NewsObject />', () => {
 
   it("still invalid 2", () => {
     cy.mount(<NewsObject news={stillInvalid2}/>);
+    cy.get(".news-object").should("not.be.visible");
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
@@ -193,6 +204,7 @@ describe('<NewsObject />', () => {
 
   it("still invalid 3", () => {
     cy.mount(<NewsObject news={stillInvalid3}/>);
+    cy.get(".news-object").should("not.be.visible");
     cy.get(".news-object").within(() => {
       cy.get(".news-image").should("not.exist");
       cy.get(".news-details").should("not.exist");
