@@ -53,5 +53,5 @@ export default function NewsObject(info) {
       );
   }
   else
-    return (<div className="news-object"/>);
+    return (<div className="news-object null"/>);
 }

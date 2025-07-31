@@ -60,6 +60,9 @@ footer {
         margin-right: 0px;
     }
 }
+.null {
+    display: none;
+}
 .news-object {
     display: flex;
     margin: max(15px, calc(4vw - 16.8px));
