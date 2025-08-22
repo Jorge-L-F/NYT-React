@@ -5,12 +5,10 @@ describe('news-feed', () => {
 
   it('empty-feed', () => {
     let body = cy.get("body");
-    //body.should("have.length", 3);
     body.within(() => {
       cy.get(".navigation-bar").should("exist");
       cy.get(".feed-container").within(() => {
-        let button = cy.get("button");
-        button.should("exist");
+        cy.get("button").should("exist");
         cy.get(".scrollable-box").within(() => {
           cy.get("p.initial-message").should("exist");
           cy.get("p.error-message").should("not.exist");
